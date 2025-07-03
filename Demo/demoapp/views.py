@@ -22,7 +22,7 @@ def create_student(request):
     return Response(student_data.data)
 
 
-@api_view(['UPDATE'])
+@api_view(['POST'])
 def update_student(request,id):
     student_data = Student.objects.get(id=id)
     student_lists = StudentSerializer(instance=student_data,data=request.data)
@@ -33,7 +33,7 @@ def update_student(request,id):
 
 @api_view(['DELETE'])
 def delete_student(request,id):
-    student_data = Student.objectts.get(id=id)
+    student_data = Student.objects.get(id=id)
     student_data.delete()
     return Response('Student Deleted Successfully')
 
